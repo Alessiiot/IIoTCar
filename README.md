@@ -1,1 +1,2 @@
-# IIoTCar
+Alessio - Server
+Michele - Client
