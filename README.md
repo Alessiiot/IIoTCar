@@ -1,2 +1,0 @@
-Alessio - Server
-Michele - Client
