@@ -1,10 +1,21 @@
-Alessio - Server
-Michele - Client
+Alessio - Server NodeJS
+Michele - Client C#
 
-Lo scopo del programma è quello di far mandare dei dati raccolta da sensori ad un server SQL
+Lo scopo del programma è quello di mandare dei dati raccolti da sensori ad un server SQL
 con database. Il database sarà utilizzato come storage dei dati letti dai sensori.
+Il client è scritto in C# e la parte server in NodeJS.
 
-Nella cartella Protocols sono presenti Http, ProtocolInterface. 
+SPIEGAZIONE UTILIZZO PROTOCOLLO MQTT
+
+Utilizzo di Mosquitto come broker MQTT https://test.mosquitto.org. Successivamente abbiamo deciso la struttura da dare
+ai topic e payload "/frequency" per i dati del sensore di frequenza. "/speed" per i dati del sensore di velocità. 
+I dati vengono poi inseriti in un Database PostgreSQL nelle rispettive colonne "Frequency" e "Speed" nella tabella "Sensors".
+
+Si sono eseguiti di test di lettura dei messaggi ai topic attraverso MQTT.fx per verificare la funzionalità del codice del client.
+
+SPIEGAZIONE DEL CODICE PROTOCOLLO MQTT
+
+Nella cartella Protocols sono presenti MQTT, ProtocolInterface. 
 La classe Http è progettata per inviare dati a un endpoint specifico utilizzando 
 il protocollo HTTP e ha un campo privato chiamato Endpoint, 
 che rappresenta l'indirizzo dell'endpoint a cui verranno inviati i dati.
@@ -37,4 +48,5 @@ La classe Speed è progettata come un oggetto che rappresenta una frequenza.
 Essa incapsula un singolo valore rappresentante la velocità e non fornisce alcun comportamento aggiuntivo.
 
 Nel file Program vengono istanziati i sensori e creata una comunicazione di dati dei sensori con un server.
-Si usa l'interfaccia del protocollo per stabilire una connessione tramite protocollo HTTP col server.
+Si usa l'interfaccia del protocollo per stabilire una connessione tramite protocollo MQTT col server.
+
